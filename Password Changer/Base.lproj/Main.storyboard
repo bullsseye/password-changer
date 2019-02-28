@@ -13,17 +13,13 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Password_Changer" customModuleProvider="target" sceneMemberID="viewController">
-                    <wkWebView key="view" contentMode="scaleToFill" id="Vbq-Dd-qan">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AbX-La-dIh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <wkWebViewConfiguration key="configuration">
-                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                            <wkPreferences key="preferences"/>
-                        </wkWebViewConfiguration>
-                    </wkWebView>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
                     <connections>
-                        <outlet property="wkWebView" destination="Vbq-Dd-qan" id="FeM-y3-tS2"/>
+                        <outlet property="wTableView" destination="AbX-La-dIh" id="WH2-H8-4IS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

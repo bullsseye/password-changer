@@ -13,6 +13,9 @@
 		93C2229622265702002B9988 /* Password_Changer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93C2229422265702002B9988 /* Password_Changer.xcdatamodeld */; };
 		93C2229822265705002B9988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2229722265705002B9988 /* Assets.xcassets */; };
 		93C2229B22265705002B9988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C2229922265705002B9988 /* LaunchScreen.storyboard */; };
+		93E2E2322227EA0900F7F261 /* PasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */; };
+		93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E2342227EC7400F7F261 /* ChangePasswordCell.swift */; };
+		93E2E2372227EC7400F7F261 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		93C2229722265705002B9988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C2229A22265705002B9988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C2229C22265705002B9988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeHandler.swift; sourceTree = "<group>"; };
+		93E2E2342227EC7400F7F261 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
+		93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		93C2228C22265702002B9988 /* Password Changer */ = {
 			isa = PBXGroup;
 			children = (
+				93E2E2332227EC5900F7F261 /* views */,
 				93C2228D22265702002B9988 /* AppDelegate.swift */,
 				93C2228F22265702002B9988 /* ViewController.swift */,
 				93C2229122265702002B9988 /* Main.storyboard */,
@@ -63,8 +70,18 @@
 				93C2229922265705002B9988 /* LaunchScreen.storyboard */,
 				93C2229C22265705002B9988 /* Info.plist */,
 				93C2229422265702002B9988 /* Password_Changer.xcdatamodeld */,
+				93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */,
 			);
 			path = "Password Changer";
+			sourceTree = "<group>";
+		};
+		93E2E2332227EC5900F7F261 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				93E2E2342227EC7400F7F261 /* ChangePasswordCell.swift */,
+				93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E2E2372227EC7400F7F261 /* ChangePasswordCell.xib in Resources */,
 				93C2229B22265705002B9988 /* LaunchScreen.storyboard in Resources */,
 				93C2229822265705002B9988 /* Assets.xcassets in Resources */,
 				93C2229322265702002B9988 /* Main.storyboard in Resources */,
@@ -139,7 +157,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C2229022265702002B9988 /* ViewController.swift in Sources */,
+				93E2E2322227EA0900F7F261 /* PasswordChangeHandler.swift in Sources */,
 				93C2229622265702002B9988 /* Password_Changer.xcdatamodeld in Sources */,
+				93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */,
 				93C2228E22265702002B9988 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
