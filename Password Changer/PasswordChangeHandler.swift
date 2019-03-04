@@ -19,7 +19,6 @@ enum Steps:Int {
 
 class PasswordChangeHandler: NSObject, WKNavigationDelegate {
     var wkWebView: WKWebView!
-    // change the below thing to PhoneScreen
     var step = Steps.PhoneScreen
     var delegate : PasswordChangeDelegate?
     
