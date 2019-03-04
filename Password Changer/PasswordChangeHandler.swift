@@ -14,18 +14,19 @@ enum Steps:Int {
     case IntermediateScreen = 2
     case OTPOrPasswordScreen = 4
     case ChangePasswordScreen = 8
+    case ChangePasswordComplete = 16
 }
 
 class PasswordChangeHandler: NSObject, WKNavigationDelegate {
     var wkWebView: WKWebView!
+    // change the below thing to PhoneScreen
     var step = Steps.PhoneScreen
+    var delegate : PasswordChangeDelegate?
     
     override init() {
         super.init()
-        let myURL = URL(string:"https://www.amazon.in/gp/css/account/forgot-password/email.html")
-        let myRequest = URLRequest(url: myURL!)
+        self.wkWebView = WKWebView.init(frame: .zero, configuration: WKWebViewConfiguration())
         self.wkWebView.navigationDelegate = self
-        self.wkWebView.load(myRequest)
     }
     
     // From count = 0 till Count = 1 should happen at server. The server should then send a redirect to the OTP screen.
@@ -68,9 +69,61 @@ class PasswordChangeHandler: NSObject, WKNavigationDelegate {
                 }
             }
         } else if (self.step == Steps.OTPOrPasswordScreen) {
-            // do something here
+            print("Inside OTP screen")
+            if (delegate != nil) {
+                self.delegate!.didRequestForOTPOrPassword(forPasswordHandlerObj: self)
+            }
         } else if (self.step == Steps.ChangePasswordScreen) {
-            // do something here
+            print("Inside ChangePasswordScreen")
+            print(self.wkWebView.url!.absoluteString)
+            self.delegate!.didCompleteVerificationOfOTP(forPasswordHandlerObj: self)
+            self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password').value='Electronics1';") { (html: Any?, error: Error?) in
+                if (error == nil) {
+                    self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password_check').value='Electronics1';", completionHandler: { (html: Any?, error: Error?) in
+                        if (error == nil) {
+                            self.wkWebView.evaluateJavaScript("document.getElementById('continue').click();", completionHandler: { (html: Any?, error: Error?) in
+                                if (error == nil) {
+                                    self.step = Steps.ChangePasswordComplete
+                                    self.delegate!.passwordChangeComplete(forPasswordHandlerObj: self)
+                                } else {
+                                    
+                                }
+                            })
+                        } else {
+                            print(error!.localizedDescription)
+                        }
+                    })
+                } else {
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func loadURLToChangePassword(url: URL?) {
+        let myURL = URL(string:"https://www.amazon.in/gp/css/account/forgot-password/email.html")
+        let myRequest = URLRequest(url: myURL!)
+        self.wkWebView.load(myRequest)
+    }
+    
+    func loadURL(url: URL?, withOTPOrPassword: String) {
+        if (url != nil) {
+            self.wkWebView.evaluateJavaScript("document.getElementsByClassName('a-input-text-wrapper a-span12 cvf-widget-input cvf-widget-input-code')[0].childNodes[0].value=\(withOTPOrPassword)") { (html: Any?, error: Error?) in
+                if (error == nil) {
+                    print("Entered the otp in otp screen successfully: html\(String(describing: html!))")
+                    self.wkWebView.evaluateJavaScript("document.getElementsByClassName('a-button-input')[0].click();", completionHandler: { (html: Any?, error: Error?) in
+                        if (error == nil) {
+                            print("OTPScreen button clicked")
+                            print(self.wkWebView.url!.absoluteString)
+                            self.step = Steps.ChangePasswordScreen
+                        } else {
+                            print(error.debugDescription)
+                        }
+                    })
+                } else {
+                    print(error.debugDescription)
+                }
+            }
         }
     }
 }
