@@ -97,7 +97,8 @@ class ChangePasswordCell: UITableViewCell {
         self.progressIndicator.isHidden = true
         self.enterOtpOrPasswordTextView.isHidden = true
         self.okButton.isHidden = true
-        self.changePasswordButton.setTitle("Password Changed Successfully", for: UIControl.State.highlighted)
+        self.changePasswordButton.isHidden = false
+        self.changePasswordButton.setTitle("Password Changed Successfully", for: UIControl.State.normal)
         self.changePasswordButton.isEnabled = false
     }
     
