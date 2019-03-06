@@ -45,7 +45,7 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if (self.step == Steps.PhoneScreen) {
-            self.wkWebView.evaluateJavaScript("document.getElementById('ap_email').value='9899666063';") { (html: Any?, error: Error?) in
+            self.wkWebView.evaluateJavaScript("document.getElementById('ap_email').value='**********';") { (html: Any?, error: Error?) in
                 if error == nil {
                     self.wkWebView.evaluateJavaScript("document.getElementById('continue').click();", completionHandler: { (html: Any?, error: Error?) in
                         if error == nil {
@@ -76,9 +76,9 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
             print("Inside ChangePasswordScreen")
             print(self.wkWebView.url!.absoluteString)
             self.delegate!.didCompleteVerificationOfOTP(forPasswordHandlerObj: self)
-            self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password').value='Electronics1';") { (html: Any?, error: Error?) in
+            self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password').value='**********';") { (html: Any?, error: Error?) in
                 if (error == nil) {
-                    self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password_check').value='Electronics1';", completionHandler: { (html: Any?, error: Error?) in
+                    self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password_check').value='**********';", completionHandler: { (html: Any?, error: Error?) in
                         if (error == nil) {
                             self.wkWebView.evaluateJavaScript("document.getElementById('continue').click();", completionHandler: { (html: Any?, error: Error?) in
                                 if (error == nil) {
