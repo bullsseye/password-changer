@@ -28,6 +28,10 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
     
     // Temp hardcoded data
     var data = [["Amazon": "www.amazon.in"]]
+    var urlVsObjectHandlerClassString = ["www.amazon.in": AmazonPasswordChangeHandlerConst]
+    
+    static let AmazonPasswordChangeHandlerConst = "AmazonPasswordChangeHandler"
+    
     var urlVsPasswordChangeHandler = [String: PasswordChangeHandler]()
     
     override func viewDidLoad() {
@@ -58,7 +62,7 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
     // FIXME:(ramang) Use reflection rather than the factory method to create class objects
     
     func ClassFromClassName(Class : String) -> PasswordChangeHandler? {
-        if (Class == "AmazonPasswordChangeHandler") {
+        if (Class == ViewController.AmazonPasswordChangeHandlerConst) {
             return AmazonPasswordChangeHandler()
         }
         return nil
@@ -71,9 +75,14 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
             forCell.shouldShowProgressIndicator(startProgressIndicator: true, forURL: forURL)
             var passwordChangeHandlerObj = self.urlVsPasswordChangeHandler[forURL!.absoluteString]
             if (passwordChangeHandlerObj == nil) {
-                passwordChangeHandlerObj = self.ClassFromClassName(Class: "AmazonPasswordChangeHandler")!
-                passwordChangeHandlerObj?.delegate = self
-                self.urlVsPasswordChangeHandler[forURL!.absoluteString] = passwordChangeHandlerObj
+                let classString = self.urlVsObjectHandlerClassString[forURL!.absoluteString]
+                if (classString != nil) {
+                    passwordChangeHandlerObj = self.ClassFromClassName(Class: classString!)
+                    passwordChangeHandlerObj?.delegate = self
+                    self.urlVsPasswordChangeHandler[forURL!.absoluteString] = passwordChangeHandlerObj
+                } else {
+                    assertionFailure("Invalid URL or URL not supported")
+                }
             }
             passwordChangeHandlerObj!.loadURLToChangePassword(url: forURL)
         }
