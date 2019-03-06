@@ -16,6 +16,7 @@
 		93E2E2322227EA0900F7F261 /* PasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */; };
 		93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E2342227EC7400F7F261 /* ChangePasswordCell.swift */; };
 		93E2E2372227EC7400F7F261 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */; };
+		93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E2342227EC7400F7F261 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
 		93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
+		93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPasswordChangeHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				93C2229C22265705002B9988 /* Info.plist */,
 				93C2229422265702002B9988 /* Password_Changer.xcdatamodeld */,
 				93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */,
+				93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */,
 			);
 			path = "Password Changer";
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C2229022265702002B9988 /* ViewController.swift in Sources */,
+				93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */,
 				93E2E2322227EA0900F7F261 /* PasswordChangeHandler.swift in Sources */,
 				93C2229622265702002B9988 /* Password_Changer.xcdatamodeld in Sources */,
 				93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */,

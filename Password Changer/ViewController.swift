@@ -55,13 +55,23 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
         return 100
     }
     
+    // FIXME:(ramang) Use reflection rather than the factory method to create class objects
+    
+    func ClassFromClassName(Class : String) -> PasswordChangeHandler? {
+        if (Class == "AmazonPasswordChangeHandler") {
+            return AmazonPasswordChangeHandler()
+        }
+        return nil
+    }
+    
     // MARK - PasswordChangeDelegate methods
+    
     func didRequestForPasswordChange(forCell: ChangePasswordCell, forURL: URL?) {
         if (forURL != nil) {
             forCell.shouldShowProgressIndicator(startProgressIndicator: true, forURL: forURL)
             var passwordChangeHandlerObj = self.urlVsPasswordChangeHandler[forURL!.absoluteString]
             if (passwordChangeHandlerObj == nil) {
-                passwordChangeHandlerObj = PasswordChangeHandler()
+                passwordChangeHandlerObj = self.ClassFromClassName(Class: "AmazonPasswordChangeHandler")!
                 passwordChangeHandlerObj?.delegate = self
                 self.urlVsPasswordChangeHandler[forURL!.absoluteString] = passwordChangeHandlerObj
             }
