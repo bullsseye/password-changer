@@ -27,10 +27,12 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
     @IBOutlet var wTableView: UITableView!
     
     // Temp hardcoded data
-    var data = [["Amazon": "www.amazon.in"]]
-    var urlVsObjectHandlerClassString = ["www.amazon.in": AmazonPasswordChangeHandlerConst]
+    var data = [["Amazon": "www.amazon.in"], ["Facebook": "m.facebook.com"]]
+    var urlVsObjectHandlerClassString = ["www.amazon.in": AmazonPasswordChangeHandlerConst,
+                                         "m.facebook.com": FacebookPasswordChangeHandlerConst]
     
     static let AmazonPasswordChangeHandlerConst = "AmazonPasswordChangeHandler"
+    static let FacebookPasswordChangeHandlerConst = "FacebookPasswordChangeHandler"
     
     var urlVsPasswordChangeHandler = [String: PasswordChangeHandler]()
     
@@ -64,6 +66,8 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
     func ClassFromClassName(Class : String) -> PasswordChangeHandler? {
         if (Class == ViewController.AmazonPasswordChangeHandlerConst) {
             return AmazonPasswordChangeHandler()
+        } else if (Class == ViewController.FacebookPasswordChangeHandlerConst) {
+            return FacebookPasswordChangeHandler()
         }
         return nil
     }
