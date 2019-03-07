@@ -21,6 +21,8 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
     var wkWebView: WKWebView!
     var step = Steps.PhoneScreen
     var delegate : PasswordChangeDelegate?
+    var oldPassword = "Electronics1"
+    var newPassword = "Electronics2"
     
     override init() {
         super.init()
@@ -76,9 +78,9 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
             print("Inside ChangePasswordScreen")
             print(self.wkWebView.url!.absoluteString)
             self.delegate!.didCompleteVerificationOfOTP(forPasswordHandlerObj: self)
-            self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password').value='**********';") { (html: Any?, error: Error?) in
+            self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password').value='\(self.newPassword)';") { (html: Any?, error: Error?) in
                 if (error == nil) {
-                    self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password_check').value='**********';", completionHandler: { (html: Any?, error: Error?) in
+                    self.wkWebView.evaluateJavaScript("document.getElementById('ap_fpp_password_check').value='\(self.newPassword)';", completionHandler: { (html: Any?, error: Error?) in
                         if (error == nil) {
                             self.wkWebView.evaluateJavaScript("document.getElementById('continue').click();", completionHandler: { (html: Any?, error: Error?) in
                                 if (error == nil) {

@@ -19,6 +19,8 @@ class FacebookPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigati
     var wkWebView: WKWebView!
     var step = FacebookSteps.LoggedOut
     var delegate : PasswordChangeDelegate?
+    var oldPassword = "Electronics2"
+    var newPassword = "Electronics1"
     
     override init() {
         super.init()
@@ -38,7 +40,7 @@ class FacebookPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigati
                             print("We are not logged in")
                             self.wkWebView.evaluateJavaScript("document.getElementById('m_login_email').value='royalbird.raman@gmail.com'", completionHandler: { (html: Any?, error: Error?) in
                                 if (error == nil) {
-                                    self.wkWebView.evaluateJavaScript("document.getElementById('m_login_password').value='Electronics1'", completionHandler: { (html: Any?, error: Error?) in
+                                    self.wkWebView.evaluateJavaScript("document.getElementById('m_login_password').value='\(self.oldPassword)'", completionHandler: { (html: Any?, error: Error?) in
                                         if (error == nil) {
                                             self.wkWebView.evaluateJavaScript("document.getElementById('u_0_5').click();", completionHandler: { (html: Any?, error: Error?) in
                                                 if (error == nil) {
@@ -70,11 +72,11 @@ class FacebookPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigati
             }
         } else if (self.step == FacebookSteps.LoggedIn) {
             print("We are already logged in")
-            self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[0].value='Electronics1';") { (html: Any?, error: Error?) in
+            self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[0].value='\(self.oldPassword)';") { (html: Any?, error: Error?) in
                 if error == nil {
-                    self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[1].value='Electronics2';", completionHandler: { (html: Any?, error: Error?) in
+                    self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[1].value='\(self.newPassword)';", completionHandler: { (html: Any?, error: Error?) in
                         if error == nil {
-                            self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[2].value='Electronics2';", completionHandler: { (html: Any?, error: Error?) in
+                            self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_56bg _55ws')[2].value='\(self.newPassword)';", completionHandler: { (html: Any?, error: Error?) in
                                 if error == nil {
                                     self.wkWebView.evaluateJavaScript("document.getElementsByClassName('_54k8 _52jg _56bs _26vk _56b_ _56bw _56bu')[0].click();", completionHandler: { (html: Any?, error: Error?) in
                                         if (error == nil) {

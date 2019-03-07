@@ -15,6 +15,10 @@ protocol PasswordChangeHandler {
     
     var wkWebView: WKWebView! {get}
     
+    var oldPassword: String {get}
+    
+    var newPassword: String {get}
+    
     func loadURLToChangePassword(url: URL?)
     
     func loadURL(url: URL?, withOTPOrPassword: String)

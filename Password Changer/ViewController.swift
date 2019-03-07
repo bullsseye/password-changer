@@ -21,6 +21,8 @@ extension NSNotification.Name {
     public static let PasswordChangeHandlerDidRequestOTPOrPassword = Notification.Name("PasswordChangeHandlerDidRequestOTPOrPassword")
     public static let PasswordChangeHandlerDidCompleteVerificationOfOTP = Notification.Name("PasswordChangeHandlerDidCompleteVerificationOfOTP")
     public static let PasswordChangeHandlerDidCompletePasswordChange = Notification.Name("PasswordChangeHandlerDidCompletePasswordChange")
+    public static let ChangePasswordCellDidAskForPasswords = Notification.Name("ChangePasswordCellDidAskForPasswords")
+    public static let ChangePasswordCellDidGetDeSelected = Notification.Name("ChangePasswordCellDidGetDeSelected")
 }
 
 class ViewController: UITableViewController, PasswordChangeDelegate {
@@ -72,6 +74,27 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
         return nil
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let label = Array(self.data[indexPath.row].keys)[0]
+        let urlString = self.data[indexPath.row][label]
+        self.changePasswordCellDidAskForPasswords(url: URL(string: urlString!))
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let label = Array(self.data[indexPath.row].keys)[0]
+        let urlString = self.data[indexPath.row][label]
+        if (urlString != nil) {
+            let url = URL(string: urlString!)
+            if (url != nil) {
+                NotificationCenter.default.post(name: Notification.Name.ChangePasswordCellDidGetDeSelected,
+                                                object: self,
+                                                userInfo: ["url": url!])
+            } else {
+                assertionFailure("Invalid url found")
+            }
+        }
+    }
+    
     // MARK - PasswordChangeDelegate methods
     
     func didRequestForPasswordChange(forCell: ChangePasswordCell, forURL: URL?) {
@@ -121,6 +144,29 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
             NotificationCenter.default.post(name: Notification.Name.PasswordChangeHandlerDidCompletePasswordChange,
                                             object: self,
                                             userInfo: ["url": forPasswordHandlerObj.wkWebView.url!])
+        }
+    }
+    
+    func changePasswordCellDidAskForPasswords(url: URL?) {
+        if (url != nil) {
+            var passwordChangeHandlerObj = self.urlVsPasswordChangeHandler[url!.absoluteString]
+            if (passwordChangeHandlerObj == nil) {
+                let classString = self.urlVsObjectHandlerClassString[url!.absoluteString]
+                if (classString != nil) {
+                    passwordChangeHandlerObj = self.ClassFromClassName(Class: classString!)
+                    passwordChangeHandlerObj?.delegate = self
+                    self.urlVsPasswordChangeHandler[url!.absoluteString] = passwordChangeHandlerObj
+                } else {
+                    assertionFailure("Invalid URL or URL not supported")
+                }
+            }
+            NotificationCenter.default.post(name: Notification.Name.ChangePasswordCellDidAskForPasswords,
+                                            object: self,
+                                            userInfo: ["url": url!,
+                                                       "oldPassword": passwordChangeHandlerObj!.oldPassword,
+                                                       "newPassword": passwordChangeHandlerObj!.newPassword])
+        } else {
+            assertionFailure("url found nil for a cell")
         }
     }
 }
