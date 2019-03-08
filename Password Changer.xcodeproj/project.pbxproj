@@ -18,6 +18,7 @@
 		93E2E2372227EC7400F7F261 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */; };
 		93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */; };
 		93E2E23B222FC73000F7F261 /* FacebookPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */; };
+		93E2E23D22311CB400F7F261 /* GooglePasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		93E2E2352227EC7400F7F261 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
 		93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPasswordChangeHandler.swift; sourceTree = "<group>"; };
+		93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePasswordChangeHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				93E2E2312227EA0900F7F261 /* PasswordChangeHandler.swift */,
 				93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */,
 				93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */,
+				93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */,
 			);
 			path = "Password Changer";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E2E23D22311CB400F7F261 /* GooglePasswordChangeHandler.swift in Sources */,
 				93E2E23B222FC73000F7F261 /* FacebookPasswordChangeHandler.swift in Sources */,
 				93C2229022265702002B9988 /* ViewController.swift in Sources */,
 				93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */,
