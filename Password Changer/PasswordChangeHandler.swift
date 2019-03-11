@@ -17,7 +17,7 @@ protocol PasswordChangeHandler {
     
     var oldPassword: String {get}
     
-    var newPassword: String {get}
+    var presentPassword: String {get}
     
     func loadURLToChangePassword(url: URL?)
     

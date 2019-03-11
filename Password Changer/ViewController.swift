@@ -168,7 +168,7 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
                                             object: self,
                                             userInfo: ["url": url!,
                                                        "oldPassword": passwordChangeHandlerObj!.oldPassword,
-                                                       "newPassword": passwordChangeHandlerObj!.newPassword])
+                                                       "newPassword": passwordChangeHandlerObj!.presentPassword])
         } else {
             assertionFailure("url found nil for a cell")
         }

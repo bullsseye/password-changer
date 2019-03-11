@@ -21,8 +21,9 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
     var wkWebView: WKWebView!
     var step = Steps.PhoneScreen
     var delegate : PasswordChangeDelegate?
-    var oldPassword = "Electronics1"
-    var newPassword = "Electronics2"
+    var oldPassword = (UserDefaults.standard.value(forKey: "AmazonOldPassword") ?? "***********") as! String
+    var presentPassword = (UserDefaults.standard.value(forKey: "AmazonPresentPassword") ?? "**********") as! String
+    var newPassword = PasswordGenerator.generatePassword()
     
     override init() {
         super.init()
@@ -85,6 +86,10 @@ class AmazonPasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
                             self.wkWebView.evaluateJavaScript("document.getElementById('continue').click();", completionHandler: { (html: Any?, error: Error?) in
                                 if (error == nil) {
                                     self.step = Steps.ChangePasswordComplete
+                                    self.oldPassword = self.presentPassword
+                                    self.presentPassword = self.newPassword
+                                    UserDefaults.standard.set(self.oldPassword, forKey: "AmazonOldPassword")
+                                    UserDefaults.standard.set(self.presentPassword, forKey: "AmazonPresentPassword")
                                     self.delegate!.passwordChangeComplete(forPasswordHandlerObj: self)
                                 } else {
                                     

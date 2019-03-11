@@ -18,11 +18,13 @@ enum GoogleSigninSteps:Int {
 }
 
 class GooglePasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigationDelegate {
+    
     var wkWebView: WKWebView!
     var step = GoogleSigninSteps.GoogleSigninStepsAskForContinueScreen
     var delegate : PasswordChangeDelegate?
-    var oldPassword = "***************"
-    var newPassword = "***************"
+    var oldPassword = (UserDefaults.standard.value(forKey: "GoogleOldPassword") ?? "**********") as! String
+    var presentPassword = (UserDefaults.standard.value(forKey: "GooglePresentPassword") ?? "**********") as! String
+    var newPassword = PasswordGenerator.generatePassword()
     
     override init() {
         super.init()
@@ -64,7 +66,7 @@ class GooglePasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
                 }
             }
         } else if (self.step == GoogleSigninSteps.GoogleSigninStepsEnterPasswordScreen) {
-            self.wkWebView.evaluateJavaScript("document.getElementById('Passwd').value='\(self.oldPassword)'") { (html: Any?, error: Error?) in
+            self.wkWebView.evaluateJavaScript("document.getElementById('Passwd').value='\(self.presentPassword)'") { (html: Any?, error: Error?) in
                 if (error == nil) {
                     print(html!)
                     self.wkWebView.evaluateJavaScript("document.getElementById('signIn').click();", completionHandler: { (html: Any?, error: Error?) in
@@ -86,6 +88,10 @@ class GooglePasswordChangeHandler: NSObject, PasswordChangeHandler, WKNavigation
                             self.wkWebView.evaluateJavaScript("document.getElementsByClassName('U26fgb O0WRkf zZhnYe e3Duub C0oVfc')[0].click()", completionHandler: { (html: Any?, error: Error?) in
                                 if (error == nil) {
                                     self.step = GoogleSigninSteps.GoogleSigninStepsPasswordChangeComplete
+                                    self.oldPassword = self.presentPassword
+                                    self.presentPassword = self.newPassword
+                                    UserDefaults.standard.set(self.oldPassword, forKey: "GoogleOldPassword")
+                                    UserDefaults.standard.set(self.presentPassword, forKey: "GooglePresentPassword")
                                     self.delegate!.passwordChangeComplete(forPasswordHandlerObj: self)
                                 } else {
                                     print(error.debugDescription)

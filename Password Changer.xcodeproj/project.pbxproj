@@ -19,6 +19,7 @@
 		93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */; };
 		93E2E23B222FC73000F7F261 /* FacebookPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */; };
 		93E2E23D22311CB400F7F261 /* GooglePasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */; };
+		93E2E23F22364D4800F7F261 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePasswordChangeHandler.swift; sourceTree = "<group>"; };
+		93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				93E2E238222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift */,
 				93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */,
 				93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */,
+				93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */,
 			);
 			path = "Password Changer";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				93C2229022265702002B9988 /* ViewController.swift in Sources */,
 				93E2E239222FBF1400F7F261 /* AmazonPasswordChangeHandler.swift in Sources */,
 				93E2E2322227EA0900F7F261 /* PasswordChangeHandler.swift in Sources */,
+				93E2E23F22364D4800F7F261 /* PasswordGenerator.swift in Sources */,
 				93C2229622265702002B9988 /* Password_Changer.xcdatamodeld in Sources */,
 				93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */,
 				93C2228E22265702002B9988 /* AppDelegate.swift in Sources */,
