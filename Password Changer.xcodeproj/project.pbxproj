@@ -21,9 +21,12 @@
 		93E2E23D22311CB400F7F261 /* GooglePasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */; };
 		93E2E23F22364D4800F7F261 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */; };
 		93E2E241224B2A4600F7F261 /* RepeatingTImer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E240224B2A4600F7F261 /* RepeatingTImer.swift */; };
+		AA3A79506E4E376094243250 /* Pods_Password_Changer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668DA50962FDD7CC29C0E82E /* Pods_Password_Changer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30D519A92A686CDEB8F3B4E1 /* Pods-Password Changer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Changer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Changer/Pods-Password Changer.release.xcconfig"; sourceTree = "<group>"; };
+		668DA50962FDD7CC29C0E82E /* Pods_Password_Changer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Changer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2228A22265702002B9988 /* Password Changer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Changer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2228D22265702002B9988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C2228F22265702002B9988 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		93E2E240224B2A4600F7F261 /* RepeatingTImer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTImer.swift; sourceTree = "<group>"; };
+		DDB6230EB52CE89C0BBE408D /* Pods-Password Changer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Changer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Changer/Pods-Password Changer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3A79506E4E376094243250 /* Pods_Password_Changer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A17AAC4DE64439AD9090603 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDB6230EB52CE89C0BBE408D /* Pods-Password Changer.debug.xcconfig */,
+				30D519A92A686CDEB8F3B4E1 /* Pods-Password Changer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		93C2228122265702002B9988 = {
 			isa = PBXGroup;
 			children = (
 				93C2228C22265702002B9988 /* Password Changer */,
 				93C2228B22265702002B9988 /* Products */,
+				3A17AAC4DE64439AD9090603 /* Pods */,
+				D865532CB0FC0A56513248A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +115,14 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		D865532CB0FC0A56513248A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				668DA50962FDD7CC29C0E82E /* Pods_Password_Changer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93C2229F22265705002B9988 /* Build configuration list for PBXNativeTarget "Password Changer" */;
 			buildPhases = (
+				3DB20E48F9C35EC19D8D7585 /* [CP] Check Pods Manifest.lock */,
 				93C2228622265702002B9988 /* Sources */,
 				93C2228722265702002B9988 /* Frameworks */,
 				93C2228822265702002B9988 /* Resources */,
+				01AB14FA49D0EAA4B679CC50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +191,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01AB14FA49D0EAA4B679CC50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Password Changer/Pods-Password Changer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Changer/Pods-Password Changer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DB20E48F9C35EC19D8D7585 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Password Changer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93C2228622265702002B9988 /* Sources */ = {
@@ -324,6 +397,7 @@
 		};
 		93C222A022265705002B9988 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB6230EB52CE89C0BBE408D /* Pods-Password Changer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +416,7 @@
 		};
 		93C222A122265705002B9988 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D519A92A686CDEB8F3B4E1 /* Pods-Password Changer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
