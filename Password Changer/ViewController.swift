@@ -16,6 +16,7 @@ protocol PasswordChangeDelegate {
     func didEnterOTPOrPassword(forCell: ChangePasswordCell, otpOrPassword: String)
     func didCompleteVerificationOfOTP(forPasswordHandlerObj: PasswordChangeHandler)
     func passwordChangeComplete(forPasswordHandlerObj: PasswordChangeHandler)
+    func didReceiveRemoteNotificationToChangePassword(fromRepeatingTimer: RepeatingTimer, urlString: String)
 }
 
 extension NSNotification.Name {
@@ -24,6 +25,7 @@ extension NSNotification.Name {
     public static let PasswordChangeHandlerDidCompletePasswordChange = Notification.Name("PasswordChangeHandlerDidCompletePasswordChange")
     public static let ChangePasswordCellDidAskForPasswords = Notification.Name("ChangePasswordCellDidAskForPasswords")
     public static let ChangePasswordCellDidGetDeSelected = Notification.Name("ChangePasswordCellDidGetDeSelected")
+    public static let ChangePasswordCellDidAskForCellHighlight = Notification.Name("ChangePasswordCellDidAskForCellHighlight")
 }
 
 class ViewController: UITableViewController, PasswordChangeDelegate {
@@ -49,6 +51,7 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.wTableView.register(UINib(nibName: "ChangePasswordCell", bundle: nil), forCellReuseIdentifier: "ChangePasswordCell")
         
+        repeatingTimer.delegate = self
         repeatingTimer.resume()
     }
     
@@ -178,6 +181,14 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
         } else {
             assertionFailure("url found nil for a cell")
         }
+    }
+    
+    func didReceiveRemoteNotificationToChangePassword(fromRepeatingTimer: RepeatingTimer, urlString: String) {
+        print("Came inside didReceiveRemoteNotificationToChangePassword")
+        let url = URL(string: urlString)!
+        NotificationCenter.default.post(name: Notification.Name.ChangePasswordCellDidAskForCellHighlight,
+                                        object: self,
+                                        userInfo: ["url": url])
     }
 }
 

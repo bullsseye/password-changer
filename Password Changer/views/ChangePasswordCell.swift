@@ -42,6 +42,8 @@ class ChangePasswordCell: UITableViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(didGetPasswords), name: Notification.Name.ChangePasswordCellDidAskForPasswords, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didGetDeselected), name: Notification.Name.ChangePasswordCellDidGetDeSelected, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didAskForCellHighlight), name: Notification.Name.ChangePasswordCellDidAskForCellHighlight, object: nil)
     }
     
     @IBAction func changePasswordAction(_ sender: Any) {
@@ -157,6 +159,18 @@ class ChangePasswordCell: UITableViewCell {
                     self.okButton.isHidden = true
                     self.changePasswordButton.isHidden = false
                     self.websiteLabel.isHidden = false
+                }
+            }
+        }
+    }
+    
+    @objc func didAskForCellHighlight(_ notification: Notification) {
+        let url: URL? = notification.userInfo?["url"] as! URL?
+        if (url != nil) {
+            if (self.url != nil) {
+                if (self.url!.absoluteString == url!.absoluteString) {
+                    // Switch it to the main thread and then highlight the cell.
+                    print("Inside did ask for cell highlight")
                 }
             }
         }
