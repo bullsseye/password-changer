@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 /// RepeatingTimer mimics the API of DispatchSourceTimer but in a way that prevents
@@ -17,19 +18,27 @@ class RepeatingTimer {
     
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
-        self.eventHandler = { print("Hello World@") }
     }
     
     private lazy var timer: DispatchSourceTimer = {
         let t = DispatchSource.makeTimerSource()
         t.schedule(deadline: .now(), repeating: self.timeInterval)
-        t.setEventHandler(handler: {
-            print("Here is this")
-        })
+        t.setEventHandler(handler: self.eventHandler)
         return t
     }()
     
-    var eventHandler: (() -> Void)?
+    var eventHandler: (() -> Void)? = {
+        let url = URL(string: "http://127.0.0.1:8000/notification/")!
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.get.rawValue
+        Alamofire.request(request).responseJSON { (response) in
+            if (response.result.isSuccess) {
+                print(response.result.value!)
+            } else {
+                print("Request not successful, response: \(response)")
+            }
+        }
+    }
     
     private enum State {
         case suspended

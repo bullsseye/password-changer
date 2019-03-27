@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
 protocol PasswordChangeDelegate {
     func didRequestForPasswordChange(forCell: ChangePasswordCell, forURL: URL?)
@@ -35,7 +36,7 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
                                          "myaccount.google.com": GooglePasswordChangeHandlerConst]
     
     // FIXME: (ramang) Hack for push notification, since I did not get APNS certificate yet.
-    let repeatingTimer = RepeatingTimer(timeInterval: 1.0)
+    let repeatingTimer = RepeatingTimer(timeInterval: 3.0)
     
     static let AmazonPasswordChangeHandlerConst = "AmazonPasswordChangeHandler"
     static let FacebookPasswordChangeHandlerConst = "FacebookPasswordChangeHandler"
