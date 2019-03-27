@@ -20,6 +20,7 @@
 		93E2E23B222FC73000F7F261 /* FacebookPasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */; };
 		93E2E23D22311CB400F7F261 /* GooglePasswordChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */; };
 		93E2E23F22364D4800F7F261 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */; };
+		93E2E241224B2A4600F7F261 /* RepeatingTImer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2E240224B2A4600F7F261 /* RepeatingTImer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePasswordChangeHandler.swift; sourceTree = "<group>"; };
 		93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
+		93E2E240224B2A4600F7F261 /* RepeatingTImer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTImer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				93E2E23A222FC73000F7F261 /* FacebookPasswordChangeHandler.swift */,
 				93E2E23C22311CB400F7F261 /* GooglePasswordChangeHandler.swift */,
 				93E2E23E22364D4800F7F261 /* PasswordGenerator.swift */,
+				93E2E240224B2A4600F7F261 /* RepeatingTImer.swift */,
 			);
 			path = "Password Changer";
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				93C2229622265702002B9988 /* Password_Changer.xcdatamodeld in Sources */,
 				93E2E2362227EC7400F7F261 /* ChangePasswordCell.swift in Sources */,
 				93C2228E22265702002B9988 /* AppDelegate.swift in Sources */,
+				93E2E241224B2A4600F7F261 /* RepeatingTImer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

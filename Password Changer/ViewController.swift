@@ -34,6 +34,9 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
                                          "m.facebook.com": FacebookPasswordChangeHandlerConst,
                                          "myaccount.google.com": GooglePasswordChangeHandlerConst]
     
+    // FIXME: (ramang) Hack for push notification, since I did not get APNS certificate yet.
+    let repeatingTimer = RepeatingTimer(timeInterval: 1.0)
+    
     static let AmazonPasswordChangeHandlerConst = "AmazonPasswordChangeHandler"
     static let FacebookPasswordChangeHandlerConst = "FacebookPasswordChangeHandler"
     static let GooglePasswordChangeHandlerConst = "GooglePasswordChangeHandler"
@@ -44,6 +47,8 @@ class ViewController: UITableViewController, PasswordChangeDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.wTableView.register(UINib(nibName: "ChangePasswordCell", bundle: nil), forCellReuseIdentifier: "ChangePasswordCell")
+        
+        repeatingTimer.resume()
     }
     
     // MARK - TableViewDelegate methods
